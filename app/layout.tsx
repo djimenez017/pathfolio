@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en" className=" text-white">
       <body className="flex flex-row ${inter.className}">
         <Navigation />
-        <div className="w-2/3">{children}</div>
+        <div className="w-4/5">{children}</div>
       </body>
     </html>
   );
