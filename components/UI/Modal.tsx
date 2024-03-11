@@ -12,11 +12,11 @@ function Modal({ openModal, closeModal, children }) {
   }, [openModal]);
 
   return (
-    <dialog ref={ref} onCancel={closeModal} className=" p-5 rounded-lg ">
+    <dialog ref={ref} onCancel={closeModal} className=" p-5 rounded-lg w-80 ">
       {children}{" "}
       <button
         onClick={closeModal}
-        className="flex flex-row items-center bg-pink text-white font-bold p-2 w-full justify-center"
+        className="flex flex-row items-center bg-pink text-white font-bold p-2 mt-1 w-full justify-center"
       >
         Cancel
       </button>
