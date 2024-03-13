@@ -8,21 +8,21 @@ function Card({ title, url }) {
     window.location.reload();
   };
   return (
-    <div className="">
-      <div className="bg-purple text-white p-4 my-2 flex justify-between items-center">
+    <div className="shadow-lg ">
+      <div className="bg-purple text-white p-5 my-5 flex justify-between items-center rounded-md">
         <div>
           {" "}
-          <h2>{title}</h2>
-          <a href={url} target="_blank">
+          <h2 className="text-2xl font-bold">{title}</h2>
+          <a href={url} target="_blank" className="text-yellow">
             {url}
           </a>
         </div>
         <div>
-          <button className="bg-yellow p-3">
+          <button className="bg-yellow p-4">
             {" "}
             <MdModeEdit />
           </button>
-          <button className="bg-pink p-3" onClick={removeLink}>
+          <button className="bg-pink p-4" onClick={removeLink}>
             <MdDelete />
           </button>
         </div>

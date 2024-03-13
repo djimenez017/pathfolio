@@ -12,7 +12,7 @@ function Modal({ openModal, closeModal, children }) {
   }, [openModal]);
 
   return (
-    <dialog ref={ref} onCancel={closeModal} className=" p-5 rounded-lg w-80 ">
+    <dialog ref={ref} onCancel={closeModal} className=" p-5 rounded-lg w-96 ">
       {children}{" "}
       <button
         onClick={closeModal}

@@ -1,5 +1,4 @@
 "use client";
-import { MdModeEdit, MdDelete } from "react-icons/md";
 import Modal from "./UI/Modal";
 import { useState } from "react";
 import GetLocalStorageItems from "./utils/GetLocalStorageItems";
@@ -24,11 +23,11 @@ export const Dashboard = () => {
     window.location.reload();
   };
   return (
-    <div className="text-black w-3/5 mx-auto ">
+    <div className="text-black w-3/5 mx-auto mt-5">
       <div className="flex justify-between items-center mb-4">
-        <h2>Dashboard</h2>
+        <h2 className="font-bold text-3xl">Dashboard</h2>
         <button
-          className="bg-pink px-6 py-2 text-white"
+          className="bg-pink px-8 py-3 text-white"
           onClick={() => setModal(true)}
         >
           Add New
@@ -44,9 +43,10 @@ export const Dashboard = () => {
           <input
             type="text"
             placeholder="Website"
-            className=" shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className=" shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
             value={title}
             onChange={getTitle}
+            required
           />
           <label htmlFor="url" className="border-purple p-1">
             URL
@@ -56,9 +56,10 @@ export const Dashboard = () => {
             name="url"
             id="url"
             placeholder="https://jimenez.tech"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
+            className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 focus:outline-none focus:shadow-outline "
             value={url}
             onChange={getUrl}
+            required
           />
           <input
             type="button"
