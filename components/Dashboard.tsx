@@ -23,8 +23,8 @@ export const Dashboard = () => {
     window.location.reload();
   };
   return (
-    <div className="text-black w-3/5 mx-auto mt-5">
-      <div className="flex justify-between items-center mb-4">
+    <div className="text-black md:w-3/5 md:mt-5 ">
+      <div className="flex justify-between m-auto items-center mb-4">
         <h2 className="font-bold text-3xl">Dashboard</h2>
         <button
           className="bg-pink px-8 py-3 text-white"
