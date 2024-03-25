@@ -16,10 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className=" text-white md:h-full ">
-      <body className="flex flex-row sm:h-full ${inter.className}">
+    <html lang="en" className=" text-white h-full ">
+      <body className="flex sm:flex-row sm:h-full ${inter.className}">
         <Navigation />
-        <div className=" mt-2  w-4/5 overflow-auto">{children}</div>
+        <div className="w-96 mx-auto mt-2 sm:w-4/5 overflow-auto">
+          {children}
+        </div>
       </body>
     </html>
   );
