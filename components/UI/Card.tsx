@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 function Card({ title, url }) {
   const removeLink = () => {
     localStorage.removeItem(title);
-    window.location.reload();
   };
   return (
     <div className="shadow-lg ">
