@@ -3,30 +3,39 @@ import Modal from "./UI/Modal";
 import { useEffect, useState } from "react";
 import GetLocalStorageItems from "./utils/GetLocalStorageItems";
 
+interface Link {
+  name: string;
+  url: string;
+}
+
 export const Dashboard = () => {
   const [modal, setModal] = useState(false);
   const [linktitle, setLinkTitle] = useState("");
   const [linkurl, setLinkUrl] = useState("");
-  const [links, setLinks] = useState(
-    JSON.parse(localStorage.getItem("links")) || []
-  );
+  const [links, setLinks] = useState<Link[]>([]);
 
   useEffect(() => {
-    localStorage.setItem("links", JSON.stringify(links));
-  }, [links]);
+    const storedLinksJSON = localStorage.getItem("links");
+    if (storedLinksJSON) {
+      const storedLinks = JSON.parse(storedLinksJSON) as Link[];
+      setLinks(storedLinks);
+    }
+  }, []);
 
-  const getTitle = (e) => {
+  const getTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLinkTitle(e.target.value);
   };
 
-  const getUrl = (e) => {
+  const getUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLinkUrl(e.target.value);
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newLink = { name: linktitle, url: linkurl };
-    setLinks([...links, newLink]);
+    const updatedLinks = [...links, newLink];
+    setLinks(updatedLinks);
+    localStorage.setItem("links", JSON.stringify(updatedLinks));
     setModal(false);
     setLinkTitle("");
     setLinkUrl("");
