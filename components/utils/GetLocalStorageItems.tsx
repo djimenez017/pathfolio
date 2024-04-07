@@ -11,7 +11,12 @@ interface Props {
 
 export default function GetLocalStorageItems({ data }: Props) {
   const linkCards = data.map((linkCard, index) => (
-    <Card key={index} title={linkCard.name} url={linkCard.url}></Card>
+    <Card
+      key={index}
+      title={linkCard.name}
+      url={linkCard.url}
+      index={index}
+    ></Card>
   ));
 
   return <div>{linkCards}</div>;

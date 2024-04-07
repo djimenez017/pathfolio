@@ -1,10 +1,9 @@
 import React from "react";
 import { MdModeEdit, MdDelete } from "react-icons/md";
-import { useRouter } from "next/router";
 
-function Card({ title, url }) {
+function Card({ title, url, index }) {
   const removeLink = () => {
-    localStorage.removeItem(title);
+    localStorage.removeItem(title[index]);
   };
   return (
     <div className="shadow-lg ">
