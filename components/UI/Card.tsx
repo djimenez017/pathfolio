@@ -3,7 +3,11 @@ import { MdModeEdit, MdDelete } from "react-icons/md";
 
 function Card({ title, url, index }) {
   const removeLink = () => {
-    localStorage.removeItem(title[index]);
+    // Construct the localStorage key using the title
+    const localStorageKey = `link_${title}`; // Use a prefix for clarity
+
+    // Remove the item from localStorage
+    localStorage.removeItem(localStorageKey);
   };
   return (
     <div className="shadow-lg ">
