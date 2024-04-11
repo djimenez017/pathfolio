@@ -1,11 +1,12 @@
-import React from "react";
+import Image from "next/image";
 import {
   MdSpaceDashboard,
   MdOutlinePerson,
   MdOutlinePreview,
 } from "react-icons/md";
 
-const Navigation = () => {
+const Navigation = ({ user }) => {
+  console.log(user);
   return (
     <nav className="flex fixed bottom-0 sm:relative w-full sm:w-1/5 bg-purple sm:h-screen ">
       <div className="flex sm:flex-col sm:ml-10 p-3 w-full">
@@ -22,8 +23,18 @@ const Navigation = () => {
             <p className="ml-2">Preview</p>
           </li>
           <li className="flex flex-col sm:flex-row items-center p-1 sm:mb-4 transition-colors duration-200 hover:text-pink hover:border-purple">
-            <MdOutlinePerson size={25} />
-            <p className="ml-2">My Profile</p>
+            {user.image ? (
+              <Image
+                src={user.image}
+                width={35}
+                height={35}
+                alt={user.name}
+                className="rounded-full"
+              />
+            ) : (
+              <MdOutlinePerson size={25} />
+            )}
+            <p className="ml-2">{user ? user.name : "My Profile"}</p>
           </li>
         </ul>
       </div>
