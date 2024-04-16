@@ -4,9 +4,18 @@ import {
   MdOutlinePerson,
   MdOutlinePreview,
 } from "react-icons/md";
+import { PrismaClient } from "@prisma/client";
+import Link from "next/link";
 
-const Navigation = ({ user }) => {
-  console.log(user);
+const prisma = new PrismaClient();
+
+const Navigation = async ({ user }) => {
+  const userData = await prisma.user.findUnique({
+    where: {
+      email: user.email,
+    },
+  });
+
   return (
     <nav className="flex fixed bottom-0 sm:relative w-full sm:w-1/5 bg-purple sm:h-screen ">
       <div className="flex sm:flex-col sm:ml-10 p-3 w-full">
@@ -14,9 +23,14 @@ const Navigation = ({ user }) => {
           Pathfolio
         </h1>
         <ul className="flex sm:flex-col justify-around sm:justify-normal w-full">
-          <li className="flex flex-col sm:flex-row items-center p-1 sm:mb-4 transition-colors duration-200 hover:text-pink  hover:border-purple">
-            <MdSpaceDashboard size={25} />
-            <p className="ml-2">Dashboard</p>
+          <li className=" items-center p-1 sm:mb-4 transition-colors duration-200 hover:text-pink  hover:border-purple">
+            <Link
+              href={`/${userData?.username}`}
+              className="flex flex-col sm:flex-row"
+            >
+              <MdSpaceDashboard size={25} />
+              <p className="ml-2">Dashboard</p>
+            </Link>
           </li>
           <li className="flex flex-col sm:flex-row items-center p-1 sm:mb-4 transition-colors duration-200 hover:text-pink hover:border-purple">
             <MdOutlinePreview size={25} />
