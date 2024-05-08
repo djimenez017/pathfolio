@@ -1,3 +1,5 @@
+"use Client";
+import { createContext, useContext, useState } from "react";
 import Image from "next/image";
 import {
   MdSpaceDashboard,
@@ -10,12 +12,14 @@ import Link from "next/link";
 const prisma = new PrismaClient();
 
 const Navigation = async ({ user }) => {
+  const [loggedInUser, setLoggedInUser] = useState();
   const userData = await prisma.user.findUnique({
     where: {
       email: user.email,
     },
   });
-
+  setLoggedInUser(userData);
+  console.log(loggedInUser);
   return (
     <nav className="flex fixed bottom-0 sm:relative w-full sm:w-1/5 bg-purple sm:h-screen ">
       <div className="flex sm:flex-col sm:ml-10 p-3 w-full">
