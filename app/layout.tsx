@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "../components/navigation/Navigation";
+import { auth } from "@/auth";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,11 +16,13 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const session = await auth();
+  const user = session.user;
   return (
     <html lang="en" className=" text-white h-full ">
       <body className="flex sm:flex-row sm:h-full ${inter.className}">
-        <Navigation />
-        <div className="w-96 mx-auto mt-2 sm:w-4/5 overflow-auto">
+        <Navigation user={user} />
+        <div className="w-96 mx-auto mt-2 sm:w-4/5 overflow-auto" user={user}>
           {children}
         </div>
       </body>

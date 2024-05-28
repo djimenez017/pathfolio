@@ -24,7 +24,7 @@ function Card({ title, url, index }) {
             {" "}
             <MdModeEdit />
           </button>
-          <button className="bg-pink p-4" onClick={removeLink}>
+          <button className="bg-pink p-4">
             <MdDelete />
           </button>
         </div>
