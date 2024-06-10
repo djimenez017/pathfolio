@@ -9,6 +9,9 @@ import {
 import Link from "next/link";
 
 const Navigation = async ({ user }) => {
+  {
+    user.id === "" ? console.log("Not Logged In") : console.log("Logged In");
+  }
   return (
     <nav className="flex fixed bottom-0 sm:relative w-full sm:w-1/5 bg-purple sm:h-screen ">
       <div className="flex sm:flex-col sm:ml-10 p-3 w-full">
