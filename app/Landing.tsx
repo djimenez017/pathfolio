@@ -1,7 +1,10 @@
+import AuthButton from "@/components/UI/AuthButton";
+
 const Landing = () => {
   return (
     <div>
-      <h1>Welcome to Pathfolio!</h1>
+      <h1 className="text-black">Welcome to Pathfolio!</h1>
+      <AuthButton />
     </div>
   );
 };
