@@ -1,24 +1,20 @@
 "use client";
-import { signIn, signOut } from "@/auth";
+import { signIn } from "@/auth";
+import { FaGoogle } from "react-icons/fa";
 
-function AuthButton({ user }) {
-  const handleSignIn = async (e) => {
-    e.preventDefault();
-    await signIn("google");
-  };
-
-  const handleSignOut = async (e) => {
-    e.preventDefault();
-    await signOut();
-  };
-
-  return user === undefined ? (
-    <form onSubmit={handleSignIn}>
-      <button type="submit">Sign in with Google</button>
-    </form>
-  ) : (
-    <form onSubmit={handleSignOut}>
-      <button type="submit">Log Out</button>
+function AuthButton() {
+  return (
+    <form
+      onSubmit={async () => {
+        await signIn("google");
+      }}
+    >
+      <button type="submit" className="bg-blue p-3 flex items-center">
+        <i className="pr-3">
+          <FaGoogle />
+        </i>
+        Signin with Google
+      </button>
     </form>
   );
 }
