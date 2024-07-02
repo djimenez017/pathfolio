@@ -1,21 +1,52 @@
 "use client";
-import { signIn } from "@/auth";
+import { useSession, signIn, signOut } from "next-auth/react";
 import { FaGoogle } from "react-icons/fa";
 
-function AuthButton() {
+// function AuthButton() {
+//   return (
+//     <form
+//       onSubmit={async () => {
+//         await signIn("google");
+//       }}
+//     >
+//       <button type="submit" >
+//
+//         Signin with Google
+//       </button>
+//     </form>
+//   );
+// }
+export function AuthButton({ user }) {
+  if (user) {
+    return (
+      <>
+        <button
+          onClick={() => signOut()}
+          className="bg-pink p-3 flex items-center"
+        >
+          {" "}
+          <i className="pr-3">
+            <FaGoogle />
+          </i>
+          Sign out
+        </button>
+      </>
+    );
+  }
   return (
-    <form
-      onSubmit={async () => {
-        await signIn("google");
-      }}
-    >
-      <button type="submit" className="bg-blue p-3 flex items-center">
+    <>
+      Not signed in <br />
+      <button
+        onClick={() => signIn()}
+        className="bg-pink p-3 flex items-center"
+      >
+        {" "}
         <i className="pr-3">
           <FaGoogle />
         </i>
-        Signin with Google
+        Sign in with Google
       </button>
-    </form>
+    </>
   );
 }
 
